@@ -12,9 +12,12 @@ class Overtime extends Model
 
     protected $fillable = [
         'user_id',
-        'overtime_start',
-        'overtime_end',
-        'reason',
+        'position',
+        'date',
+        'start_time',
+        'end_time',
+        'duration',
+        'task_description',
         'status',
         'note',
     ];
