@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Tables\Actions\Action;
 
 class OvertimeResource extends Resource
 {
@@ -136,6 +137,14 @@ class OvertimeResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('View Form')
+                    ->url(fn(Overtime $record): string => route('preview-form', $record))
+                    ->color('success')
+                    ->openUrlInNewTab(),
+                Action::make('Download Form')
+                    ->url(fn(Overtime $record): string => route('download-form', $record))
+                    ->color('danger')
+                    ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
